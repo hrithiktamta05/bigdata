@@ -1,0 +1,195 @@
+> show dbs
+admin    0.000GB
+college  0.000GB
+config   0.000GB
+local    0.000GB
+> use pranay
+> db.pranay.insertMany([{id:1,name:"Pranay",gender:"male" },{id:2,name:"Giradkar",gender:"male"},{id:3,name:"Rohan",gender:"male"},{id:4,name:"Ariana",gender:"female"}])
+
+> db.pranay.find()
+
+> db.pranay.insertOne({id:5,name:"Ash",gender:"male"})
+
+> db.pranay.findOne({name:"Giradkar"})
+
+> db.pranay.find().pretty()
+
+> db.pranay.remove({name:"Rohan"})
+
+> db.pranay.update({name:"Ash"},{$set:{name:"Ashley"}})
+
+> db.pranay.createIndex({"title":1})
+
+> db.pranay.getIndexes()
+
+> db.pranay.dropIndex({"title":9})
+
+> db.pranay.dropIndexes()
+
+
+
+
+
+
+
+
+
+spark-shell
+val data = sc.parallelize(List(10,20,30,50))
+data.collect
+
+
+  :history
+  1  val data = sc.parallelize(List(10,20,30,50))
+  2  data.collect
+  3  :history
+
+  val mapfunc = data.map(x=>x+20)
+
+
+  mapfunc.collect
+res1: Array[Int] = Array(30, 40, 50, 70)
+
+  val data = sc.parallelize(List(20,60,40,100))
+
+
+  data.collect
+
+
+  val filterfunc = data.filter(x=>x!20)
+
+                                          
+
+  val filterfunc = data.filter(x=>x!=20)
+
+
+  filterfunc.collect
+
+  val filterfunc = data.filter(x=>x=100)
+
+
+  val filterfunc = data.filter(x=>x==100)
+
+
+  filterfunc.collect
+
+
+  val countfunc = data.count()
+
+
+  countfunc.collect
+
+
+  val data = sc.parallelize(List(20,60,40,100,100))
+
+
+  data.collect
+
+
+  val distinctfunc = data.distinct()
+
+
+  distinctfunc.collect
+
+
+  val data2 = sc.parallelize(List(1,2))
+
+
+  data2.collect
+
+
+  val data3 = sc.parallelize(List(2,3,5))
+
+
+  data3.collect
+
+
+  val unionfunc = data2.union(data3)
+
+
+  unionfunc.collect
+
+  val intersectfunc = data2.intersection(data3)
+
+  intersectfunc.collect
+
+
+  val cartesianfunc = data2.cartesian(data3)
+
+
+  cartesianfunc.collect
+
+
+  val data4 = sc.parallelize(Seq(("C",3),("B",2),("A",1),("D",4)))
+
+
+  data4.collect
+
+
+  val sortfunc = data4.sortBykey()
+
+
+  val sortfunc = data4.sortByKey()
+
+
+  sortfunc.collect
+
+
+  val groupfunc = data4.groupByKey()
+
+
+  groupfunc.collect
+
+
+  val data4 = sc.parallelize(Seq(("C",3),("B",2),("A",1),("D",4),("B",5),("E",6)))
+
+
+  data4.collect
+
+
+  val sortfunc = data4.sortByKey()
+
+  sortfunc.collect
+
+
+  val reducefunc = data4.reduceByKey((value,x)=>(value+x))
+
+
+  reducefunc.collect
+
+
+  val data5 = sc.parallelize(Seq(("F",7),("E",6),("D",5)))
+
+
+  data5.collect
+
+
+  val cogroup = data4.cogroup(data5)
+
+
+  cogroup.collect
+
+
+  val data0 = sc.parallelize(List(10,20,30,40,50))
+
+
+  val firstfunc = data0.first()
+
+
+  firstfunc.collect
+
+
+  val takefunc = data).take(3)
+
+
+  val takefunc = data0.take(3)
+
+
+  data5.collect.foreach(println)
+(F,7)
+(E,6)
+(D,5)
+
+
+
+
